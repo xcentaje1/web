@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xcentaje | Publicaciones</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos específicos para la sección de publicaciones */
+        .publications-header {
+            padding-top: 150px;
+            padding-bottom: 50px;
+            text-align: center;
+        }
+
+        .publications-header h1 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .publications-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding-bottom: 100px;
+        }
+
+        .article-card {
+            background-color: var(--primary-dark);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .article-image {
+            height: 200px;
+            background-color: var(--secondary-dark);
+            position: relative;
+        }
+
+        /* Abstract placeholders for economic topics */
+        .img-macro {
+            background: linear-gradient(135deg, #112240, #1a365d);
+        }
+
+        .img-data {
+            background: radial-gradient(circle at center, #1b2838, #0a192f);
+        }
+
+        .img-finance {
+            background: linear-gradient(to right, #0d213f, #112240);
+        }
+
+        .article-badge {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background-color: var(--gold);
+            color: var(--primary-dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .article-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .article-title {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-excerpt {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .article-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.3s;
+        }
+
+        .article-link:hover {
+            color: var(--gold-hover);
+            gap: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Menú de Navegación -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html"
+                    style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 15px;">
+                    Xcentaje<span class="dot">.</span>
+                    <span class="logo-sub">Economic Data Consulting</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#firma">La Firma</a></li>
+                <li><a href="index.html#expertise">Áreas de Expertise</a></li>
+                <li><a href="publicaciones.html" style="color: var(--gold);">Publicaciones</a></li>
+                <li><a href="index.html#contacto" class="btn-gold">Agendar Consulta</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header Publicaciones -->
+    <header class="publications-header">
+        <div class="container">
+            <h1>Publicaciones e Informes</h1>
+            <div class="divider text-center"></div>
+            <p>Análisis macroeconómico, proyecciones sectoriales y modelos de inteligencia de negocios elaborados por
+                nuestro equipo de expertos.</p>
+        </div>
+    </header>
+
+    <!-- Grid de Artículos -->
+    <main class="container">
+        <div class="articles-grid">
+            <!-- Artículo 1 -->
+            <article class="article-card">
+                <div class="article-image img-macro">
+                    <span class="article-badge">Macroeconomía</span>
+                </div>
+                <div class="article-content">
+                    <div class="article-date">📅 03 Abril 2026 • 5 min lectura</div>
+                    <h2 class="article-title">Impacto de la política monetaria en el tipo de cambio proyectado</h2>
+                    <p class="article-excerpt">Análisis exhaustivo sobre las recientes decisiones del banco central y
+                        cómo los ajustes de tasas repercutirán en los flujos de capital durante el segundo semestre.</p>
+                    <a href="#" class="article-link">Leer informe completo <span aria-hidden="true">→</span></a>
+                </div>
+            </article>
+
+            <!-- Artículo 2 -->
+            <article class="article-card">
+                <div class="article-image img-data">
+                    <span class="article-badge">Data Science</span>
+                </div>
+                <div class="article-content">
+                    <div class="article-date">📅 28 Marzo 2026 • 8 min lectura</div>
+                    <h2 class="article-title">Modelos predictivos aplicados a la gestión de inventarios</h2>
+                    <p class="article-excerpt">Cómo la implementación de algoritmos de series temporales permite reducir
+                        quiebres de stock en un 25% optimizando el flujo de caja operativo.</p>
+                    <a href="#" class="article-link">Leer informe completo <span aria-hidden="true">→</span></a>
+                </div>
+            </article>
+
+            <!-- Artículo 3 -->
+            <article class="article-card">
+                <div class="article-image img-finance">
+                    <span class="article-badge">Finanzas Corporativas</span>
+                </div>
+                <div class="article-content">
+                    <div class="article-date">📅 15 Febrero 2026 • Informe PDF</div>
+                    <h2 class="article-title">Dashboard Financiero interactivo: Sector Agropecuario</h2>
+                    <p class="article-excerpt">Presentamos la nueva herramienta corporativa en Power BI para el
+                        monitoreo de liquidaciones de divisas, costos de insumos y proyecciones de rinde.</p>
+                    <a href="#" class="article-link">Visualizar Tablero <span aria-hidden="true">→</span></a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                Xcentaje<span class="dot">.</span>
+            </div>
+            <div class="footer-copy">
+                &copy; 2026 Xcentaje. Consultoría Económica & Data Analytics. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
