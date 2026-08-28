@@ -336,6 +336,30 @@ body {
     line-height: 1.3;
 }
 
+.card-expertise p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.btn-card-link {
+    margin-top: auto;
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.btn-card-link:hover {
+    color: var(--gold-hover);
+    gap: 10px;
+}
+
 .expertise-list {
     list-style: none;
     padding: 0;

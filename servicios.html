@@ -1,0 +1,554 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xcentaje | Servicios & Ãreas de Expertise</title>
+    <!-- Fuentes corporativas -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos especÃ­ficos para la pÃ¡gina de Servicios */
+        .services-hero {
+            padding-top: 150px;
+            padding-bottom: 40px;
+            text-align: center;
+            background: radial-gradient(circle at top center, rgba(17, 34, 64, 1) 0%, rgba(10, 25, 47, 1) 70%);
+        }
+
+        .services-hero h1 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .services-hero p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 750px;
+            margin: 0 auto 30px auto;
+            line-height: 1.6;
+        }
+
+        /* Barra de navegaciÃ³n rÃ¡pida por servicios (Pills) */
+        .services-nav-bar {
+            position: sticky;
+            top: 70px;
+            z-index: 90;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 15px 0;
+            margin-bottom: 50px;
+        }
+
+        .services-nav-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .services-nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(17, 34, 64, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 30px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .services-nav-link:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Secciones de detalle de servicios */
+        .service-detail-section {
+            padding: 60px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            scroll-margin-top: 130px;
+        }
+
+        .service-detail-card {
+            background: linear-gradient(135deg, var(--secondary-dark), #102344);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            padding: 45px 40px;
+            box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-detail-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gold);
+        }
+
+        .service-card-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .service-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .service-title-wrap .icon {
+            font-size: 2.5rem;
+            line-height: 1;
+        }
+
+        .service-title-wrap h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--white);
+            margin: 0 0 6px 0;
+        }
+
+        .service-title-wrap .subtitle {
+            color: var(--gold);
+            font-size: 0.95rem;
+            margin: 0;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .service-grid-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .service-items-title {
+            color: var(--white);
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-items-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+
+        .service-items-list li {
+            position: relative;
+            padding-left: 26px;
+            color: #b0c4de;
+            font-size: 0.96rem;
+            line-height: 1.6;
+        }
+
+        .service-items-list li::before {
+            content: "âœ“";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .service-side-box {
+            background: rgba(10, 25, 47, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 6px;
+            padding: 30px 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .service-side-box h4 {
+            color: var(--white);
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin: 0 0 10px 0;
+        }
+
+        .service-side-box p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .badge-tag {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.12);
+            color: var(--gold);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+        }
+
+        @media (max-width: 900px) {
+            .service-grid-content {
+                grid-template-columns: 1fr;
+            }
+            .service-card-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- MenÃº de NavegaciÃ³n -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    Xcentaje<span class="dot">.</span>
+                    <span class="logo-sub">Economic Data Consulting</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#firma">La Firma</a></li>
+                <li><a href="servicios.html" style="color: var(--gold);">Servicios</a></li>
+                <li><a href="index.html#metodologia">MetodologÃ­a</a></li>
+                <li><a href="publicaciones.html">Publicaciones</a></li>
+                <li><a href="contacto.html" class="btn-gold">Agendar Consulta</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header Principal -->
+    <header class="services-hero">
+        <div class="container">
+            <div class="tagline">PORTAFOLIO DE SERVICIOS</div>
+            <h1>Ãreas de Expertise</h1>
+            <div class="divider text-center"></div>
+            <p>
+                Desarrollamos soluciones integrales de consultorÃ­a econÃ³mica, modelado financiero y analÃ­tica avanzada para empresas, corporaciones e inversores estratÃ©gicos.
+            </p>
+        </div>
+    </header>
+
+    <!-- Barra de NavegaciÃ³n RÃ¡pida entre Especialidades -->
+    <nav class="services-nav-bar">
+        <div class="container">
+            <ul class="services-nav-list">
+                <li><a href="#macro" class="services-nav-link"><span>ðŸ“ˆ</span> MacroeconÃ³micos</a></li>
+                <li><a href="#sectorial" class="services-nav-link"><span>ðŸ­</span> Sectorial</a></li>
+                <li><a href="#financiero" class="services-nav-link"><span>ðŸ’¼</span> EconÃ³micos & Financieros</a></li>
+                <li><a href="#capitales" class="services-nav-link"><span>ðŸ›ï¸</span> Mercado de Capitales</a></li>
+                <li><a href="#proyectos" class="services-nav-link"><span>ðŸ—ï¸</span> Proyectos de InversiÃ³n</a></li>
+                <li><a href="#econometria" class="services-nav-link"><span>ðŸ”¬</span> Estudios EconomÃ©tricos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenido de Servicios -->
+    <main class="container" style="padding-bottom: 80px;">
+
+        <!-- 1. ANÃLISIS MACROECONÃ“MICOS -->
+        <section class="service-detail-section" id="macro">
+            <div class="service-detail-card">
+                <div class="service-card-top">
+                    <div class="service-title-wrap">
+                        <div class="icon">ðŸ“ˆ</div>
+                        <div>
+                            <h2>AnÃ¡lisis MacroeconÃ³micos</h2>
+                            <p class="subtitle">Monitoreo continuo de coyuntura, precios, sector externo y polÃ­tica econÃ³mica.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-grid-content">
+                    <div>
+                        <div class="service-items-title">Estudios e Informes Especializados</div>
+                        <ul class="service-items-list">
+                            <li><strong>Informes de coyuntura econÃ³mica:</strong> DiagnÃ³stico periÃ³dico del estado macroeconÃ³mico general y proyecciones de corto y mediano plazo.</li>
+                            <li><strong>Indicadores de actividad y demanda:</strong> EstimaciÃ³n del Producto Bruto Interno (PBI), inversiÃ³n bruta, consumo privado, confianza del consumidor, oferta agregada y demanda agregada.</li>
+                            <li><strong>Nivel e Ã­ndices de precios:</strong> Monitoreo y cÃ¡lculo de inflaciÃ³n, commodities, Precios al Consumidor (PC), IPM, ING, IPIM, tipo de cambio nominal y real, y evoluciÃ³n de tarifas de servicios pÃºblicos.</li>
+                            <li><strong>Informes monetarios y cambiarios:</strong> AnÃ¡lisis de riesgo paÃ­s, liquidez del sistema bancario, reservas internacionales del Banco Central, depÃ³sitos, crÃ©ditos y estructura de tasas de interÃ©s.</li>
+                            <li><strong>Finanzas pÃºblicas:</strong> Estructura tributaria, presupuesto nacional y provincial, recaudaciÃ³n fiscal, gasto pÃºblico, sostenibilidad de la deuda pÃºblica y balances fiscales.</li>
+                            <li><strong>Sector externo y comercio internacional:</strong> EvoluciÃ³n del comercio exterior, estructura de aranceles, cuotas, barreras paraarancelarias, balanza comercial y balanza de pagos.</li>
+                            <li><strong>EconomÃ­a internacional:</strong> Movilidad de capitales, regÃ­menes cambiarios globales, bloques de integraciÃ³n econÃ³mica e impacto de organismos multilaterales.</li>
+                            <li><strong>Expectativas econÃ³micas regionales:</strong> AnÃ¡lisis y relevamiento de variables productivas y de expectativas en economÃ­as regionales.</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-side-box">
+                        <div>
+                            <span class="badge-tag">Entregables & Valor</span>
+                            <h4>Decisiones con respaldo macro</h4>
+                            <p>AnticÃ­pese a shocks cambiarios, variaciones de tasas y ciclos econÃ³micos con informes periÃ³dicos ejecutivos y alertas tempranas adaptadas a su sector.</p>
+                        </div>
+                        <a href="contacto.html" class="btn-gold-solid text-center">Solicitar Informe Macro</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. ANÃLISIS SECTORIAL -->
+        <section class="service-detail-section" id="sectorial">
+            <div class="service-detail-card">
+                <div class="service-card-top">
+                    <div class="service-title-wrap">
+                        <div class="icon">ðŸ­</div>
+                        <div>
+                            <h2>AnÃ¡lisis Sectorial</h2>
+                            <p class="subtitle">DiagnÃ³stico profundo de cadenas productivas, estructura de mercado y competitividad.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-grid-content">
+                    <div>
+                        <div class="service-items-title">Estudios e Informes Especializados</div>
+                        <ul class="service-items-list">
+                            <li><strong>Escenario del sector:</strong> AnÃ¡lisis, evaluaciÃ³n y proyecciÃ³n del panorama sectorial tanto a nivel local como en mercados internacionales.</li>
+                            <li><strong>Informes sectoriales integrales:</strong> CaracterizaciÃ³n productiva, procesos tecnolÃ³gicos, localizaciÃ³n territorial, proyecciones de crecimiento, expectativas y estudios de mercado.</li>
+                            <li><strong>Estructura de la oferta:</strong> VolÃºmenes de producciÃ³n, tecnologÃ­a disponible, capacidades instaladas, mapeo de principales oferentes y proyecciones de oferta.</li>
+                            <li><strong>Estructura de la demanda:</strong> Mercado interno, cÃ¡lculo de elasticidades de demanda, estructuras de mercado, importaciones, exportaciones y competitividad nacional e internacional.</li>
+                            <li><strong>Factores productivos:</strong> Estudio y anÃ¡lisis de insumos crÃ­ticos, disponibilidad, evoluciÃ³n de precios y cuellos de botella en la provisiÃ³n.</li>
+                            <li><strong>Estructura de costos:</strong> DesagregaciÃ³n analÃ­tica de insumos, bienes intermedios y finales, tendencias de costos, productividad y curvas de competitividad.</li>
+                            <li><strong>Informes de rentabilidad sectorial:</strong> EvoluciÃ³n y dinÃ¡mica de precios, mÃ¡rgenes unitarios, volÃºmenes de venta y perspectivas de rentabilidad futura.</li>
+                            <li><strong>Proyecciones de mercado y ciclo de vida:</strong> Principales tendencias de consumo, anÃ¡lisis del ciclo de vida del producto y determinantes macroeconÃ³micos de la demanda.</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-side-box">
+                        <div>
+                            <span class="badge-tag">Posicionamiento</span>
+                            <h4>Inteligencia competitiva</h4>
+                            <p>Comprenda la posiciÃ³n exacta de su empresa dentro de la cadena de valor y detecte oportunidades de mercado antes que la competencia.</p>
+                        </div>
+                        <a href="contacto.html" class="btn-gold-solid text-center">Solicitar Estudio Sectorial</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ANÃLISIS ECONÃ“MICOS Y FINANCIEROS -->
+        <section class="service-detail-section" id="financiero">
+            <div class="service-detail-card">
+                <div class="service-card-top">
+                    <div class="service-title-wrap">
+                        <div class="icon">ðŸ’¼</div>
+                        <div>
+                            <h2>AnÃ¡lisis EconÃ³micos y Financieros</h2>
+                            <p class="subtitle">ValuaciÃ³n de activos corporativos, estructura de financiamiento y optimizaciÃ³n de pasivos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-grid-content">
+                    <div>
+                        <div class="service-items-title">Estudios e Informes Especializados</div>
+                        <ul class="service-items-list">
+                            <li><strong>Sistema financiero:</strong> Informes sobre la evoluciÃ³n y condiciones del sistema financiero local e internacional.</li>
+                            <li><strong>Estructura de capital:</strong> AnÃ¡lisis de composiciÃ³n de deuda/capital propio, fusiones, adquisiciones (M&A), ventas de activos y operaciones societarias.</li>
+                            <li><strong>ValuaciÃ³n de empresas:</strong> Informes tÃ©cnicos de valoraciÃ³n corporativa aplicando mÃ©todos de Flujos de Fondos Descontados (DCF), MÃºltiplos Comparables y Valor Patrimonial Ajustado.</li>
+                            <li><strong>ReestructuraciÃ³n de pasivos:</strong> Estrategias y estudios para la readecuaciÃ³n y refinanciaciÃ³n de pasivos financieros y comerciales.</li>
+                            <li><strong>Alianzas y asociaciones estratÃ©gicas:</strong> Informes de factibilidad econÃ³mica, sinergias financieras y estructuraciÃ³n de acuerdos corporativos.</li>
+                            <li><strong>Estructura de financiamiento:</strong> DiagnÃ³stico y propuesta de financiamiento Ã³ptimo a corto y largo plazo.</li>
+                            <li><strong>ConversiÃ³n de deuda:</strong> PreparaciÃ³n de informes sobre canje, renegociaciÃ³n y conversiÃ³n de deuda pÃºblica y privada.</li>
+                            <li><strong>EvaluaciÃ³n de condiciones financieras:</strong> RevisiÃ³n de clÃ¡usulas financieras, tasas efectivas, convenios de inversiÃ³n y contratos de crÃ©dito.</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-side-box">
+                        <div>
+                            <span class="badge-tag">Finanzas Corporativas</span>
+                            <h4>MaximizaciÃ³n de valor</h4>
+                            <p>Asesoramiento tÃ©cnico para operaciones estratÃ©gicas, rondas de capital, valuaciÃ³n para compra/venta y renegociaciÃ³n de pasivos.</p>
+                        </div>
+                        <a href="contacto.html" class="btn-gold-solid text-center">Agendar Consulta Financiera</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. MERCADO DE CAPITALES -->
+        <section class="service-detail-section" id="capitales">
+            <div class="service-detail-card">
+                <div class="service-card-top">
+                    <div class="service-title-wrap">
+                        <div class="icon">ðŸ›ï¸</div>
+                        <div>
+                            <h2>Mercado de Capitales</h2>
+                            <p class="subtitle">GestiÃ³n de portafolios, selecciÃ³n de activos y monitoreo de tÃ­tulos pÃºblicos y privados.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-grid-content">
+                    <div>
+                        <div class="service-items-title">Estudios e Informes Especializados</div>
+                        <ul class="service-items-list">
+                            <li><strong>AnÃ¡lisis de cartera de inversiÃ³n:</strong> AuditorÃ­a y seguimiento riguroso de carteras para tesorerÃ­as corporativas e inversores privados.</li>
+                            <li><strong>PolÃ­tica financiera para inversiones:</strong> DefiniciÃ³n de marcos normativos y criterios cuantitativos para las decisiones de inversiÃ³n.</li>
+                            <li><strong>EvaluaciÃ³n de performance:</strong> MÃ©tricas de rendimiento ajustado por riesgo (Sharpe, Treynor, Alfa de Jensen, Value at Risk).</li>
+                            <li><strong>Indicadores macroeconÃ³micos determinantes:</strong> IdentificaciÃ³n del impacto de tasas de interÃ©s, inflaciÃ³n y tipo de cambio en el precio de los activos.</li>
+                            <li><strong>EvoluciÃ³n de tÃ­tulos pÃºblicos:</strong> Informes periÃ³dicos sobre la curva de rendimientos soberana y subsoberana, paridades y riesgo de crÃ©dito.</li>
+                            <li><strong>Portafolio Ã³ptimo y planeamiento:</strong> Informes integrales de optimizaciÃ³n de carteras bajo la teorÃ­a de frontera eficiente de Markowitz.</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-side-box">
+                        <div>
+                            <span class="badge-tag">Asset Management</span>
+                            <h4>Eficiencia y control de riesgo</h4>
+                            <p>EstructuraciÃ³n de carteras robustas frente a escenarios de volatilidad, preservando el capital y maximizando retornos reales.</p>
+                        </div>
+                        <a href="contacto.html" class="btn-gold-solid text-center">Consultar AsesorÃ­a</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. PROYECTOS DE INVERSIÃ“N -->
+        <section class="service-detail-section" id="proyectos">
+            <div class="service-detail-card">
+                <div class="service-card-top">
+                    <div class="service-title-wrap">
+                        <div class="icon">ðŸ—ï¸</div>
+                        <div>
+                            <h2>Proyectos de InversiÃ³n</h2>
+                            <p class="subtitle">FormulaciÃ³n tÃ©cnica, evaluaciÃ³n financiera integral y modelado de sensibilidad.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-grid-content">
+                    <div>
+                        <div class="service-items-title">Estudios e Informes Especializados</div>
+                        <ul class="service-items-list">
+                            <li><strong>Estudio de mercado:</strong> AnÃ¡lisis exhaustivo de oferta, demanda potencial, sustitutos y estructura de mercado del proyecto.</li>
+                            <li><strong>Aspectos tÃ©cnicos y localizaciÃ³n:</strong> Estudio de tecnologÃ­a, escala de planta, localizaciÃ³n Ã³ptima, abastecimiento de insumos y externalidades.</li>
+                            <li><strong>AnÃ¡lisis de riesgos:</strong> IdentificaciÃ³n, cuantificaciÃ³n y mitigaciÃ³n de factores de riesgo operativos, comerciales y financieros.</li>
+                            <li><strong>AnÃ¡lisis de sensibilidad:</strong> ModelaciÃ³n de escenarios de estrÃ©s (pesimista, base, optimista) ante fluctuaciones de precios y costos.</li>
+                            <li><strong>Opciones de financiamiento:</strong> EvaluaciÃ³n de alternativas crediticias, subsidios, emisiÃ³n de deuda o aporte de socios.</li>
+                            <li><strong>EvaluaciÃ³n econÃ³mica y financiera:</strong> ProyecciÃ³n de flujos de fondos y cÃ¡lculo formal de indicadores clave de rentabilidad:
+                                <ul style="list-style: square; padding-left: 20px; margin-top: 8px; color: var(--gold);">
+                                    <li><strong style="color: var(--white);">VAN:</strong> Valor Actual Neto.</li>
+                                    <li><strong style="color: var(--white);">TIR:</strong> Tasa Interna de Retorno.</li>
+                                    <li><strong style="color: var(--white);">TIRM:</strong> Tasa Interna de Retorno Modificada.</li>
+                                    <li><strong style="color: var(--white);">WACC:</strong> Costo Promedio Ponderado del Capital.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="service-side-box">
+                        <div>
+                            <span class="badge-tag">Viabilidad & Retorno</span>
+                            <h4>Certeza para invertir</h4>
+                            <p>Modelos financieros auditables que justifican sÃ³lidamente la viabilidad de su proyecto ante directorios, socios e instituciones bancarias.</p>
+                        </div>
+                        <a href="contacto.html" class="btn-gold-solid text-center">Evaluar Proyecto</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. ESTUDIOS ECONOMÃ‰TRICOS -->
+        <section class="service-detail-section" id="econometria">
+            <div class="service-detail-card">
+                <div class="service-card-top">
+                    <div class="service-title-wrap">
+                        <div class="icon">ðŸ”¬</div>
+                        <div>
+                            <h2>Estudios EconomÃ©tricos</h2>
+                            <p class="subtitle">Modelado cuantitativo, inferencia estadÃ­stica causal y pronÃ³sticos predictivos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-grid-content">
+                    <div>
+                        <div class="service-items-title">Estudios e Informes Especializados</div>
+                        <ul class="service-items-list">
+                            <li><strong>DiseÃ±o y estimaciÃ³n de modelos economÃ©tricos:</strong> ModelizaciÃ³n rigurosa aplicada a problemas especÃ­ficos de negocio y mercado.</li>
+                            <li><strong>AnÃ¡lisis de series temporales:</strong> Modelos ARIMA, SARIMA, vectores autorregresivos (VAR, VEC), cointegraciÃ³n y anÃ¡lisis de volatilidad.</li>
+                            <li><strong>Modelos de datos de panel:</strong> EstimaciÃ³n de efectos fijos y aleatorios para el seguimiento longitudinal de empresas o mercados.</li>
+                            <li><strong>Modelos predictivos y pronÃ³sticos:</strong> Proyecciones cuantitativas de demanda, ventas, precios y variables macroeconÃ³micas clave.</li>
+                            <li><strong>EvaluaciÃ³n de impacto e inferencia causal:</strong> EstimaciÃ³n de efectos de polÃ­ticas corporativas, regulaciones de mercado y elasticidades precio/ingreso.</li>
+                            <li><strong>Pruebas de hipÃ³tesis e inferencia estadÃ­stica:</strong> ValidaciÃ³n empÃ­rica de supuestos comerciales y toma de decisiones orientada a evidencia.</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-side-box">
+                        <div>
+                            <span class="badge-tag">Data Science Aplicado</span>
+                            <h4>Rigor metodolÃ³gico</h4>
+                            <p>Convierta datos dispersos en modelos explicativos y predictivos de alta precisiÃ³n para decisiones fundamentadas cientÃ­ficamente.</p>
+                        </div>
+                        <a href="contacto.html" class="btn-gold-solid text-center">Solicitar Estudio EconomÃ©trico</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Call to action -->
+    <section class="cta-section" id="contacto">
+        <div class="container text-center">
+            <div class="cta-box">
+                <h2>Â¿Necesita un estudio a medida para su empresa?</h2>
+                <p>Nuestros consultores estÃ¡n a su disposiciÃ³n para coordinar una reuniÃ³n inicial y estructurar una propuesta tÃ©cnica adaptada a sus objetivos.</p>
+                <div class="cta-buttons" style="margin-top: 2rem;">
+                    <a href="contacto.html" class="btn-gold-solid">Contactar a un Asociado</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                Xcentaje<span class="dot">.</span>
+            </div>
+            <div class="footer-copy">
+                &copy; 2026 Xcentaje. ConsultorÃ­a EconÃ³mica & Data Analytics. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
